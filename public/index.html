@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/imgs/task/favicon.ico">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Navbar of the page -->
+        <div class="left_container">
+            <ul>
+                <li><i class="fa fa-home"></i> Tasks</li>
+                
+            </ul>
+            <div class="temp_container">
+                
+                <label for="modal-toggle" class="btn">Add Task</label>
+            </div>
+        </div>
+
+        <!-- Main Section of the page -->
+        <div class="right_container">
+
+             <!--Search from the search bar -->
+            <div class="search_bar">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" id="searchInput" placeholder="Search here" oninput="filterTasks()">
+            </div>
+
+            <!--Display of the task according to status -->
+            <div class="inner_div">
+                <h1>Task Manager</h1>
+                <div class="row_flex task">
+                    <div class="task_category_cont to_do" id="todoTasks">
+                        <h2 class="sub_heading">To-Do</h2>
+                      
+                    </div>
+                    <div class="task_category_cont in_progress" id="inProgressTasks">
+                        <h2 class="sub_heading">In Progress</h2>
+                      
+                    </div>
+                    <div class="task_category_cont done" id="doneTasks">
+                        <h2 class="sub_heading">Done</h2>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup modal to add new task -->
+    <input type="checkbox" id="modal-toggle" class="modal-toggle">
+    <div class="modal">
+        <div class="modal-content">
+            <label for="modal-toggle"  class="close">&times;</label>
+            <h2>Add New Task</h2><br/>
+            <form id="taskForm">
+                <input type="hidden" id="taskIndex" name="taskIndex">
+                <label for="taskName">Task Name:</label><br/>
+                <input type="text" id="taskName" name="taskName" required><br><br>
+                <label for="taskDescription">Task description:</label><br/>
+                <textarea id="taskDescription" name="taskDescription" cols="73.5" rows="3" required></textarea><br><br>
+                <label for="taskAssigned">Assigned To:</label><br/>
+                <input type="text" id="taskAssigned" name="taskAssigned" required>
+                <span id="assignedError" class="error-message"></span>
+                <br><br>
+                <label for="taskPriority">Priority:</label><br/>
+                <select id="taskPriority" name="taskPriority" required>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select><br><br>
+                <label for="taskDueDate">Due Date:</label><br/>
+                <input type="date" id="taskDueDate" name="taskDueDate" required><br><br>
+                <label for="taskStatus">Status:</label><br/>
+                <select id="taskStatus" name="taskStatus" required>
+                    <option value="To-Do">To-Do</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Done">Done</option>
+                </select><br><br>
+                <input id="submit_btn" type="submit" value="Save Task">
+            </form>
+        </div>
+    </div>
+
+     <!-- Popup modal to Display the task -->
+    <input type="checkbox" id="modal-toggle-2" class="modal-toggle-2">
+    <div class="modal two">
+        <div class="modal-content">
+            <label for="modal-toggle-2" class="close">&times;</label>
+            <h3 for="taskName">Task Name:</h3>
+            <p id="displayTaskName"></p><br>
+            <h3 for="taskDescription">Task Description:</h3>
+            <p id="displayDescription"></p><br>
+            <h3 for="taskAssigned">Assigned To:</h3>
+            <p id="displaytaskAssigned"></p><br>
+            <h3 for="taskPriority">Priority:</h3>
+            <p id="displayTaskPriority"></p><br>
+            <h3 for="taskDueDate">Due Date:</h3>
+            <p id="displayTaskDueDate"></p><br>
+            <h3 for="taskStatus">Status:</h3>
+            <p id="displayTaskStatus"></p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
